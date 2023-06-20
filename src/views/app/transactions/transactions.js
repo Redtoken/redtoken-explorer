@@ -39,6 +39,7 @@ const Transactions = props => {
   const dispatch = useDispatch();
 
   const [page, setPage] = useState(0)
+  const [total, setTotal] = useState(10)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const [transactions, setTransactions] = useState([])
   const [loading, setLoading] = useState(false);
@@ -47,15 +48,20 @@ const Transactions = props => {
     dispatch(setHeaderTitle('Unisot Transactions'));
     onGetTransactions()
 
-  }, []);
+  }, [page, rowsPerPage]);
 
   const onGetTransactions = () => {
     setLoading(true)
-    api.getTransactions( async (err, res) => {
+    const params = {
+      page: page + 1,
+      pageSize: rowsPerPage
+    }
+    api.getTransactions(params, async (err, res) => {
       setLoading(false)
       if(!err){
         console.log('err:',err,res)
         setTransactions(res?.result||[])
+        setTotal(res.total);
       }
     })
   };
@@ -96,7 +102,7 @@ const Transactions = props => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {transactions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+              {transactions.map((row) => (
                 <StyledTableRow key={row.name}  >
                   <StyledTableCell style={{color:'#0075ff',border:'none',cursor:'pointer' }}
                     onClick={(e) => { onClickHash(row) }}
@@ -113,7 +119,7 @@ const Transactions = props => {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={transactions.length}
+          count={total}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

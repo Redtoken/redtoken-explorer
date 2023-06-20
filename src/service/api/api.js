@@ -29,8 +29,8 @@ export default {
     }
   },
 
-  getTransactions(cb) {
-    this.baseApi("/transactions", "GET", {}, (err, res) => {
+  getTransactions(params, cb) {
+    this.baseApi(`/transactions?pageNum=${params.page}&pageSize=${params.pageSize}`, "GET", {}, (err, res) => {
       if (err == null) {
         console.log("success!");
       }
