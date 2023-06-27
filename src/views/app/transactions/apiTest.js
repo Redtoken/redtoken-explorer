@@ -30,8 +30,8 @@ const APITest = props => {
     lon: false,
   });
 
-  const [username, setUserName] = useState("unisot");
-  const [password, setPassword] = useState("K5H8ashUjyJoVSv!");
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
   const [tokenId, setTokenId] = useState("0x016a0ecfebf7f345f9559a2130c1757dcdda5958d7da96445bfb7b6c1b3ad05c");
   const [deviceId, setDeviceId] = useState("deviceID-7100");
   const [deviceType, setDeviceType] = useState("Web");
