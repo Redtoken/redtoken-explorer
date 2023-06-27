@@ -13,6 +13,7 @@ import {
   Paper,
   Box,
   TablePagination,
+  Button
 } from '@mui/material';
 import api from "../../../service/api/api"
 import Loader from 'react-loader';
@@ -82,14 +83,21 @@ const Transactions = props => {
     });
   }
 
+  const goToTest = () => {
+    history.push({
+      pathname: `/app/api/test`      
+    });
+  }
+
   return (
     <Box 
       style={{padding:20}}
     >
-      {loading && <Loader loaded={!loading} />}
+      {loading && <Loader loaded={!loading} />}      
       <Paper>
         <TableContainer 
           style={{padding:20}}>
+            <Button variant="outlined" onClick={() => goToTest()}>Test API</Button>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
@@ -106,7 +114,8 @@ const Transactions = props => {
                 <StyledTableRow key={row.name}  >
                   <StyledTableCell style={{color:'#0075ff',border:'none',cursor:'pointer' }}
                     onClick={(e) => { onClickHash(row) }}
-                  >{row.tokenid }</StyledTableCell >                  <StyledTableCell component="th" scope="row" style={{border:'none'}}> {row.deviceid}</StyledTableCell>
+                  >{row.tokenid }</StyledTableCell >                  
+                  <StyledTableCell component="th" scope="row" style={{border:'none'}}> {row.deviceid}</StyledTableCell>
                   <StyledTableCell component="th" scope="row" style={{border:'none'}}> {row.devicetype}</StyledTableCell>
                   <StyledTableCell component="th" scope="row" style={{border:'none'}}> {row.lat}</StyledTableCell>
                   <StyledTableCell component="th" scope="row" style={{border:'none'}}> {row.lon}</StyledTableCell>

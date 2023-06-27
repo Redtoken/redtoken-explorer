@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import AppLayout from "../../layout/AppLayout";
-
+import APITest from "./transactions/apiTest"
 const Transactions = React.lazy(() =>
   import(/* webpackChunkName: "viwes-second-menu" */ "./transactions")
 );
@@ -26,6 +26,10 @@ class App extends Component {
               <Route
                 path={`${match.url}/transactions`}
                 render={(props) => <Transactions {...props} />}
+              />
+              <Route
+                path={`${match.url}/api/test`}
+                render={(props) => <APITest {...props} />}
               />
             </Switch>
           </Suspense>
