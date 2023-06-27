@@ -15,6 +15,7 @@ import {
 import api from "../../../service/api/api"
 import Loader from 'react-loader';
 import moment from "moment";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const APITest = props => {
   const { history } = props;
@@ -45,6 +46,10 @@ const APITest = props => {
   useEffect(() => {
     dispatch(setHeaderTitle('Test API - Generate Tx'));    
   }, []);
+
+  const cancel = () => {
+    window.location.href = "/";
+  }
 
   const callAPI = () => {
     console.log('callAPI')    
@@ -206,6 +211,7 @@ const APITest = props => {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Button variant="outlined" onClick={() => callAPI()}>Call API</Button>
+            <Button variant="outlined" onClick={() => cancel()} style={{marginLeft: "10px"}}>Cancel</Button>
           </Grid>
         </Grid>        
       </Paper>

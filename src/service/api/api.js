@@ -57,7 +57,7 @@ export default {
   },
 
   getTransactions(params, cb) {
-    this.baseEwalletApi(`${Config.EWALLET_API_URL}/transactions?pageNum=${params.page}&pageSize=${params.pageSize}`, "GET", {}, (err, res) => {
+    this.baseEwalletApi(`${Config.EWALLET_API_URL}/transactions?pageNum=${params.page}&pageSize=${params.pageSize}&sortField=created_at&sortDirection=desc`, "GET", {}, (err, res) => {
       if (err == null) {
         console.log("success!");
       }
