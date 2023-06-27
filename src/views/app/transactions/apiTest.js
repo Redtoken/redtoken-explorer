@@ -129,7 +129,7 @@ const APITest = props => {
         if (res1.error){
           setResponse(`error: ${res1.error}`);  
         } else {
-          setResponse("OK");
+          setResponse("success: OK");
         }        
         setLoading(false);
       })  
