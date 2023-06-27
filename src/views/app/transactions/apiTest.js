@@ -122,11 +122,15 @@ const APITest = props => {
           console.log('err1', err1);
           setAlertText("Creating Tx API is failed!")
           setAlerted(true);          
-          setLoading(false);
+          setLoading(false);          
           return;      
         }
         console.log('res1', res1)
-        setResponse(res1);
+        if (res1.error){
+          setResponse(`error: ${res1.error}`);  
+        } else {
+          setResponse("OK");
+        }        
         setLoading(false);
       })  
     })  
