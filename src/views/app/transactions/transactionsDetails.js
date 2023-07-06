@@ -36,6 +36,7 @@ const TransactionsDetails = (props) => {
         <TextLine label={'Hash'} value={transactionDetails?.tokenid}/>
         <TextLine label={'Device id'} value={transactionDetails?.deviceid}/>
         <TextLine label={'Device type'} value={transactionDetails?.devicetype}/>
+        <TextLine label={'Fingerprint'} value={transactionDetails?.fingerprint}/>
         <TextLine label={'Lat'} value={transactionDetails?.lat}/>
         <TextLine label={'Lon'} value={transactionDetails?.lon}/>
         <TextLine label={'Updated'} value={moment(transactionDetails?.updatedAt).format("YYYY-MM-DD HH:mm")}/>
